@@ -1,0 +1,22 @@
+---
+// Fees, insurance and format in one visible band (previously hidden in an accordion).
+import { site } from '../data/site';
+---
+<dl class="details">
+  <div>
+    <dt>Sessions</dt>
+    <dd>{site.sessionLength}, online<small>For adults anywhere in California</small></dd>
+  </div>
+  <div>
+    <dt>Fee</dt>
+    <dd>{site.fee} per session<small>A limited number of sliding scale spots</small></dd>
+  </div>
+  <div>
+    <dt>Insurance</dt>
+    <dd>In-network with Aetna, United Healthcare and Oxford (Optum)<small>Superbills for out-of-network plans</small></dd>
+  </div>
+  <div>
+    <dt>Getting started</dt>
+    <dd>Free 15-minute consultation<small><a href="/contact">Schedule a call</a></small></dd>
+  </div>
+</dl>

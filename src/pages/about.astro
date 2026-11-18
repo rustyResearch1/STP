@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import portrait from '../assets/shloka-portrait.jpg';
+---
+<Base
+  title="About Shloka Iyer, LMFT | South Asian Therapist in San Francisco"
+  description="Meet Shloka Iyer, a Licensed Marriage and Family Therapist and immigrant based in San Francisco. Online therapy for adults across California."
+  ogType="profile"
+>
+  <section class="section section--white">
+    <div class="wrap split">
+      <div class="split__media split__media--portrait">
+        <Image src={portrait} alt="Shloka Iyer, LMFT" widths={[400, 640, 900]} sizes="(max-width: 820px) 22rem, 40vw" loading="eager" quality={75} />
+      </div>
+      <div class="prose">
+        <p class="eyebrow">About Shloka Iyer, LMFT</p>
+        <h1>Understanding ourselves in context.</h1>
+        <hr class="rule" />
+        <p class="lead">I believe we make the most sense when we understand our stories, our relationships, our environments, and the cultural contexts we live in.</p>
+        <p>Therapy with me is collaborative, relational, and rooted in curiosity. It's a space where you can show up as you are and explore what's beneath the surface.</p>
+        <p><a class="arrow-link" href="/approach">More about my approach</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--line" aria-label="How I work">
+    <div class="wrap">
+      <ul class="features features--three">
+        <li class="feature"><Icon name="heart" /><div><h3>Relational &amp; Collaborative</h3><p>We explore together, curiously and at your pace.</p></div></li>
+        <li class="feature"><Icon name="chat" /><div><h3>Authentic &amp; Human</h3><p>Real conversations in a space that feels safe and non-judgmental.</p></div></li>
+        <li class="feature"><Icon name="context" /><div><h3>Context Matters</h3><p>Your story is shaped by more than just you, and that matters.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--white section--line">
+    <div class="wrap cols">
+      <div>
+        <p class="eyebrow">Background</p>
+        <h2>How I came to this work</h2>
+      </div>
+      <div class="prose">
+        <p>I became interested in psychology through close relationships and lived experiences where mental health was present, but not always openly spoken about.</p>
+        <p>I also saw how culture shaped the way people understood, expressed, or avoided those experiences, often in ways that weren't immediately visible.</p>
+        <p>That stayed with me. It shaped how I think about what people carry quietly, and how much of our internal world can go unspoken even in close relationships.</p>
+        <p>Over time, that curiosity developed into a deeper interest in how people make sense of their experiences, especially when things feel complex or don't have clear resolution.</p>
+        <p>My own experience as an immigrant has further shaped how I understand identity, belonging, and responsibility. Living between cultures often brings questions that don't have clear answers, but can become easier to sit with and understand over time.</p>
+        <p>Outside of therapy, I enjoy traveling, spending time by the ocean, and hiking. I also have a cat, Oreo, who may occasionally make an appearance during sessions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="wrap cols">
+      <div>
+        <p class="eyebrow">Practical details</p>
+        <h2>Logistics</h2>
+      </div>
+      <div>
+        <dl class="rows">
+          <div><dt>Who</dt><dd>Individual therapy for adults (18+)</dd></div>
+          <div><dt>Format</dt><dd>Online sessions across California</dd></div>
+          <div><dt>Location</dt><dd>Based in San Francisco</dd></div>
+          <div><dt>License</dt><dd>Licensed Marriage and Family Therapist in California, LMFT #154641</dd></div>
+          <div><dt>Getting started</dt><dd>Consultations are available to determine fit</dd></div>
+        </dl>
+        <p style="margin-top:1.5rem"><a class="arrow-link" href="/faq#fee">Fees and insurance</a></p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

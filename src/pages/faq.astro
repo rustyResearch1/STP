@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import Details from '../components/Details.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqs, faqText } from '../data/faqs';
+---
+<Base
+  title="FAQ, Fees and Insurance | Shloka Iyer, LMFT"
+  description="Session fee ($200), insurance (in-network with Aetna and United Healthcare/Optum), session length, cancellation policy and how to get started."
+  schema={[
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: faqText(f) },
+      })),
+    },
+  ]}
+>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Answers</p>
+      <h1>Frequently asked questions</h1>
+      <p class="lead">Everything you might want to know before getting started.</p>
+    </div>
+  </section>
+
+  <section class="section section--white section--line" style="padding-block:3.5rem" aria-label="Fees and insurance at a glance">
+    <div class="wrap">
+      <Details />
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="wrap wrap--narrow">
+      <div class="faq">
+        {faqs.map((f) => (
+          <details id={f.id}>
+            <summary>{f.question}</summary>
+            <div class="faq__answer">
+              {f.answer.map((part) =>
+                typeof part === 'string' ? <p>{part}</p> : <ul class="dash-list">{part.list.map((i) => <li>{i}</li>)}</ul>
+              )}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+<script is:inline>
+  // Open the question a link points to, e.g. /faq#fee
+  (function () {
+    function openTarget() {
+      var id = location.hash.slice(1);
+      var el = id && document.getElementById(id);
+      if (el && el.tagName === 'DETAILS') el.open = true;
+    }
+    openTarget();
+    window.addEventListener('hashchange', openTarget);
+  })();
+</script>

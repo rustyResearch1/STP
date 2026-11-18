@@ -1,0 +1,35 @@
+---
+import Logo from './Logo.astro';
+import { nav, site } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__top">
+      <div>
+        <Logo />
+        <p class="site-footer__tagline">{site.tagline}</p>
+      </div>
+      <nav aria-label="Footer">
+        <h2>Explore</h2>
+        <ul>
+          {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__practice">
+        <h2>Practice</h2>
+        <p>
+          <strong>{site.therapist}, {site.license}</strong><br />
+          {site.jobTitle} in California<br />
+          Online sessions available statewide
+        </p>
+        <a class="btn btn--outline-light" href="/contact">Consultation Call</a>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p>© {year} {site.name}, {site.credential}</p>
+      <p>This website is not monitored for emergencies. If you are in crisis, call or text 988, or go to your nearest emergency room.</p>
+    </div>
+  </div>
+</footer>

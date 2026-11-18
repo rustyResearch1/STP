@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const iso = post.data.date.toISOString().slice(0, 10);
+const fmt = post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+<Base
+  title={`${post.data.title} | Shloka Iyer, LMFT`}
+  description={post.data.excerpt}
+  ogType="article"
+  schema={[
+    {
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      description: post.data.excerpt,
+      datePublished: iso,
+      dateModified: iso,
+      author: { '@id': `${site.url}/#person` },
+      publisher: { '@id': `${site.url}/#practice` },
+      mainEntityOfPage: `${site.url}/blog/${post.id}`,
+      image: `${site.url}/og-default.jpg`,
+    },
+  ]}
+>
+  <article>
+    <header class="page-head" style="padding-bottom:2.5rem">
+      <div class="wrap wrap--narrow">
+        <a class="back-link" href="/blog">All essays</a>
+        <ul class="tags">{post.data.tags.map((t) => <li>{t}</li>)}</ul>
+        <h1>{post.data.title}</h1>
+        <p class="byline"><time datetime={iso}>{fmt}</time> · {post.data.author}, LMFT</p>
+      </div>
+    </header>
+    <div class="wrap wrap--narrow">
+      <Image src={post.data.cover} alt="" widths={[720, 1440]} sizes="(max-width: 760px) 100vw, 720px" loading="eager" quality={70} style="width:100%;aspect-ratio:16/8;object-fit:cover;border-radius:4px" />
+    </div>
+    <div class="section" style="padding-top:3rem">
+      <div class="wrap wrap--narrow">
+        <p class="pullquote">{post.data.excerpt}</p>
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CtaBand heading="If this resonates, we can talk." />
+</Base>

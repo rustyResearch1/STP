@@ -1,0 +1,15 @@
+---
+import { site } from '../data/site';
+interface Props { heading?: string; text?: string }
+const {
+  heading = 'Ready to start the conversation?',
+  text = `I offer a free ${site.consultLength.replace(' minutes', '-minute')} consultation to see if we might be a good fit. It is a chance for you to ask questions and for us to discuss your goals.`,
+} = Astro.props;
+---
+<section class="section cta-band section--line">
+  <div class="wrap">
+    <h2>{heading}</h2>
+    <p>{text}</p>
+    <a class="btn" href="/contact">Schedule a Consultation Call</a>
+  </div>
+</section>

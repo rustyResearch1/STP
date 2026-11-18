@@ -1,0 +1,114 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../data/site';
+import cover from '../../assets/coast-strip.jpg';
+import still from '../../assets/still-life.jpg';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const title = 'What Therapy Looks Like';
+const description = 'A short guide to the therapeutic process: the first session, what happens after the intake, my style, and the therapeutic relationship.';
+---
+<Base
+  title={`${title}: A Short Guide | Therapy with Shloka`}
+  description={description}
+  ogType="article"
+  schema={[
+    {
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@id': `${site.url}/#person` },
+      publisher: { '@id': `${site.url}/#practice` },
+      mainEntityOfPage: `${site.url}/guides/what-therapy-looks-like`,
+      image: `${site.url}/og-default.jpg`,
+    },
+  ]}
+>
+  <article>
+    <header class="page-head">
+      <div class="wrap wrap--narrow">
+        <a class="back-link" href="/guides">All guides</a>
+        <p class="eyebrow eyebrow--taupe">Guide 01</p>
+        <h1>{title}</h1>
+        <hr class="rule" />
+        <p class="lead">Starting therapy can feel unfamiliar, especially if it's your first time. This guide offers a glimpse into what you might expect when we work together.</p>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <Image src={cover} alt="" widths={[800, 1280, 1920]} sizes="100vw" loading="eager" quality={70} style="width:100%;aspect-ratio:8/3;object-fit:cover;border-radius:4px" />
+    </div>
+
+    <section class="section">
+      <div class="wrap wrap--narrow">
+        <ul class="icon-list icon-list--roomy">
+          <li>
+            <Icon name="chat" />
+            <div>
+              <h2>The First Session</h2>
+              <p>We'll get to know each other, explore what brings you to therapy, and begin understanding your background and goals.</p>
+            </div>
+          </li>
+          <li>
+            <Icon name="wave" />
+            <div>
+              <h2>After the Intake</h2>
+              <p>Sessions become more conversational and collaborative. We follow what feels most relevant to you, week to week.</p>
+            </div>
+          </li>
+          <li>
+            <Icon name="leaf" />
+            <div>
+              <h2>My Style</h2>
+              <p>I balance exploration with gentle direction. I don't use worksheets or formal homework; our work happens in conversation.</p>
+            </div>
+          </li>
+          <li>
+            <Icon name="sun" />
+            <div>
+              <h2>The Therapeutic Relationship</h2>
+              <p>I show up authentically while holding a safe, professional space. You can expect warmth, humor when it fits, and thoughtful challenge.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--white section--line">
+      <div class="wrap split">
+        <div class="split__media">
+          <Image src={still} alt="" widths={[480, 800]} sizes="(max-width: 820px) 100vw, 40vw" quality={70} style="aspect-ratio:4/3" />
+        </div>
+        <div class="prose">
+          <h2 style="margin-top:0">Therapy isn't linear</h2>
+          <hr class="rule" />
+          <p>Some weeks you may leave feeling lighter. Other weeks you might leave with more questions than answers. Both can be signs that meaningful work is happening.</p>
+          <p>Therapy is a space to understand yourself more deeply and respond to life with greater intention.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line">
+      <div class="wrap wrap--narrow">
+        <div class="note">
+          <p class="eyebrow eyebrow--taupe">A note to you</p>
+          <p>These guides were created to make therapy feel a little less unfamiliar.</p>
+          <p>Whether you choose to work with me or another therapist, I hope they help you ask better questions and feel more informed as you begin the process.</p>
+          <p class="note__sign">— Shloka</p>
+        </div>
+
+        <h2 style="margin-top:4rem;margin-bottom:1.5rem;font-size:1.625rem">Related reading</h2>
+        <ul class="dash-list">
+          {posts.map((p) => <li><a href={`/blog/${p.id}`}>{p.data.title}</a></li>)}
+          <li><a href="/faq">Frequently asked questions</a></li>
+        </ul>
+      </div>
+    </section>
+  </article>
+
+  <CtaBand />
+</Base>
