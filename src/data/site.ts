@@ -27,7 +27,6 @@ export const nav = [
   { href: '/about', label: 'About' },
   { href: '/who-i-work-with', label: 'Who I Work With' },
   { href: '/approach', label: 'My Approach' },
-  { href: '/guides', label: 'Guides' },
-  { href: '/blog', label: 'Writing' },
+  { href: '/resources', label: 'Resources' },
   { href: '/faq', label: 'FAQ' },
 ];

@@ -34,7 +34,7 @@ import { faqs, faqText } from '../data/faqs';
 
   <section class="section section--line">
     <div class="wrap wrap--narrow">
-      <div class="faq">
+      <div class="faq" data-reveal>
         {faqs.map((f) => (
           <details id={f.id}>
             <summary>{f.question}</summary>

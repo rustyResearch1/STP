@@ -11,5 +11,6 @@ export default defineConfig({
   base,
   trailingSlash: 'never',
   build: { format: 'file' }, // /about -> about.html, keeps the existing URLs without trailing slashes
+  redirects: { '/blog': '/resources', '/guides': '/resources' },
   integrations: [sitemap({ filter: (page) => !/\/(thank-you|404)$/.test(page) })],
 });

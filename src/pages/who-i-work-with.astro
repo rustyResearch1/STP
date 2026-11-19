@@ -5,83 +5,109 @@ import CtaBand from '../components/CtaBand.astro';
 import strip from '../assets/coast-strip.jpg';
 ---
 <Base
-  title="Who I Work With | Therapy for Immigrants, First-Gen and High-Functioning Adults"
-  description="Online therapy in California for immigrants, first-generation adults and high-functioning adults dealing with anxiety, burnout, identity and belonging."
+  title="Who I Work With | Therapy for Immigrants and First-Generation Adults"
+  description="Online therapy in California for immigrants, first-generation adults and people navigating identity, relationships, burnout and life transitions."
 >
   <section class="page-head">
     <div class="wrap">
       <p class="eyebrow">Who I work with</p>
-      <h1>Immigration, first-generation identity, and belonging</h1>
-      <p class="lead">Immigration and first-generation experiences often reshape how people relate to family, responsibility, success, and belonging. Many clients find themselves balancing multiple cultural frameworks at once.</p>
+      <h1>Immigrants, first-generation adults, and people navigating identity, relationships, and change</h1>
+      <p class="lead">Over the years, I've found myself consistently drawn to working with people who are navigating questions of identity, belonging, relationships, and responsibility within the context of their lives.</p>
     </div>
   </section>
 
-  <div class="wrap">
-    <Image src={strip} alt="" widths={[800, 1280, 1920]} sizes="100vw" quality={70} style="width:100%;aspect-ratio:8/3;object-fit:cover;border-radius:4px" />
+  <div class="wrap" data-reveal>
+    <Image src={strip} alt="" widths={[800, 1280, 1920]} sizes="100vw" loading="eager" quality={70} style="width:100%;aspect-ratio:8/3;object-fit:cover;border-radius:4px" />
   </div>
 
   <section class="section">
-    <div class="wrap cols">
-      <div>
-        <p class="eyebrow">Immigrants &amp; first-generation adults</p>
-        <h2>Common experiences</h2>
+    <div class="wrap wrap--narrow">
+      <div class="prose" data-reveal>
+        <p>Part of that comes from my own lived experience. Through close relationships where mental health was present, my own experience as an immigrant, and witnessing how culture influences the way we understand ourselves and each other, I developed a deep appreciation for the fact that people don't exist in isolation. Our emotional experiences are shaped not only by who we are, but also by our relationships, communities, culture, and the environments we move through.</p>
+        <p>While I work with adults from a range of backgrounds, much of my practice has naturally evolved around immigrants, first-generation adults, and individuals navigating identity, relationships, and life transitions. These are communities and experiences I continue to feel deeply connected to, both personally and professionally.</p>
+        <p>Rather than asking, "What's wrong with you?", I find myself asking, "What has shaped you?" More often than not, the answer isn't found in one event or one diagnosis, but in the intersection of our relationships, culture, environment, and stage of life.</p>
       </div>
-      <div class="prose">
+    </div>
+  </section>
+
+  <section class="section section--white section--line" id="immigrants">
+    <div class="wrap cols">
+      <div data-reveal>
+        <p class="eyebrow">01</p>
+        <h2>Immigrants</h2>
+      </div>
+      <div class="prose" data-reveal style="--d:120ms">
+        <p class="lead">Moving countries often changes much more than your address.</p>
+        <p>It can change your sense of belonging, your closest relationships, your identity, and even your definition of success.</p>
+        <p>Many of the immigrants I work with are balancing multiple realities at once. They may be navigating visa uncertainty, supporting loved ones across countries, building careers in unfamiliar environments, or carrying the quiet guilt that can come with creating a life that looks different from the one they once imagined.</p>
+        <h3>You might relate if you:</h3>
         <ul>
-          <li>Supporting family financially or emotionally from afar</li>
-          <li>Managing visa constraints or long-term uncertainty</li>
-          <li>Feeling guilt for building a life that looks different from family expectations</li>
-          <li>Holding mixed emotions toward family: responsibility, frustration, obligation</li>
-          <li>Acting as a bridge between cultures (language, values, expectations)</li>
+          <li>Feel caught between two places that both feel like home, yet neither feels entirely yours.</li>
+          <li>Carry responsibilities toward people you care about while trying to build a life of your own.</li>
+          <li>Feel successful professionally but disconnected personally.</li>
+          <li>Notice yourself constantly adapting depending on who you're with.</li>
+          <li>Wonder whether your life feels meaningful, not just productive.</li>
         </ul>
         <p><a href="/blog/the-silent-survival-mode-of-immigrants-in-america">Read my essay on the silent survival mode of immigrants in America</a>.</p>
       </div>
     </div>
   </section>
 
-  <section class="section section--white section--line">
+  <section class="section section--line" id="first-generation">
     <div class="wrap cols">
-      <div>
-        <p class="eyebrow">Identity</p>
-        <h2>How identity shows up</h2>
+      <div data-reveal>
+        <p class="eyebrow">02</p>
+        <h2>First-generation adults</h2>
       </div>
-      <div class="prose">
-        <p>Identity conflict often appears as:</p>
+      <div class="prose" data-reveal style="--d:120ms">
+        <p class="lead">Being first-generation often means learning to move between different worlds.</p>
+        <p>There can be pride in the opportunities you've created, while also feeling the weight of expectations, responsibility, and the pressure to make it count.</p>
+        <p>Many first-generation adults find themselves balancing different cultural values, wanting to honor where they've come from while also creating a life that feels authentic to who they're becoming.</p>
+        <h3>You might relate if you:</h3>
         <ul>
-          <li>Burnout</li>
-          <li>Stagnation</li>
-          <li>Feeling disconnected from things that once felt meaningful</li>
-          <li>Difficulty making decisions</li>
-          <li>A sense of being "in between" rather than fully belonging</li>
+          <li>Feel responsible for others in ways the people around you may not fully understand.</li>
+          <li>Find yourself navigating guilt alongside independence.</li>
+          <li>Feel torn between your own values and the expectations placed on you.</li>
+          <li>Carry pressure to succeed, even when you're unsure what success means to you anymore.</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="section section--line">
+  <section class="section section--white section--line" id="relationships">
     <div class="wrap cols">
-      <div>
-        <p class="eyebrow">High-functioning adults</p>
-        <h2>Holding it together on the outside</h2>
+      <div data-reveal>
+        <p class="eyebrow">03</p>
+        <h2>Relationships &amp; emotional patterns</h2>
       </div>
-      <div class="prose">
-        <p>I work with high-functioning adults who are navigating the complexities of modern life: those dealing with anxiety, burnout, self-doubt, and the weight of always having to "hold it together."</p>
-        <p>I specialize in working with people who look fine on the outside but feel disconnected, overwhelmed, or uncertain about their direction internally. Whether you're dealing with imposter syndrome, relationship challenges, life transitions, or cultural identity struggles, my goal is to help you feel truly seen and supported.</p>
-        <p>While I specialize in working with immigrants and first-generation individuals, I also work with adults navigating identity, relationships, and life transitions more broadly.</p>
+      <div class="prose" data-reveal style="--d:120ms">
+        <p class="lead">Many of the people I work with aren't looking for advice as much as they are looking for clarity.</p>
+        <p>They notice recurring patterns in relationships, struggle to communicate certain needs, avoid difficult conversations, or find themselves reacting in ways they don't fully understand.</p>
+        <p>Together, we become curious about those patterns. Not to decide who is right or wrong, but to understand how they developed, what purpose they may have served, and whether they still fit the life you're trying to build.</p>
+        <h3>Some of the themes we may explore:</h3>
+        <ul class="chips">
+          <li>Communication and conflict</li>
+          <li>Emotional awareness and expression</li>
+          <li>Boundaries</li>
+          <li>Avoidance</li>
+          <li>Relationship patterns</li>
+          <li>Cultural expectations</li>
+          <li>Intimacy and vulnerability</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="section section--white section--line">
+  <section class="section section--cream section--line">
     <div class="wrap cols">
-      <div>
+      <div data-reveal>
         <p class="eyebrow">A South Asian therapist</p>
         <h2>My perspective</h2>
       </div>
-      <div class="prose">
-        <p>As a South Asian therapist and an immigrant myself, I bring a nuanced understanding of cultural identity, migration, and the unique pressures faced by immigrants and first-generation individuals.</p>
+      <div class="prose" data-reveal style="--d:120ms">
         <p>I approach this work with curiosity rather than assumption. Even within similar cultural backgrounds, each person's experience is different.</p>
         <p>Therapy becomes a space to understand how your experiences, values, and environment intersect and how you want to move forward.</p>
+        <p>While I specialize in working with immigrants and first-generation individuals, I also work with adults navigating identity, relationships, and life transitions more broadly.</p>
         <p><a class="arrow-link" href="/approach">How I work</a></p>
       </div>
     </div>

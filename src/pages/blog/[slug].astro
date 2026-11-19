@@ -36,7 +36,7 @@ const fmt = post.data.date.toLocaleDateString('en-US', { year: 'numeric', month:
   <article>
     <header class="page-head" style="padding-bottom:2.5rem">
       <div class="wrap wrap--narrow">
-        <a class="back-link" href="/blog">All essays</a>
+        <a class="back-link" href="/resources#essays">All resources</a>
         <ul class="tags">{post.data.tags.map((t) => <li>{t}</li>)}</ul>
         <h1>{post.data.title}</h1>
         <p class="byline"><time datetime={iso}>{fmt}</time> · {post.data.author}, LMFT</p>

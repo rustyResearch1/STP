@@ -31,7 +31,7 @@ const description = 'A short guide to the therapeutic process: the first session
   <article>
     <header class="page-head">
       <div class="wrap wrap--narrow">
-        <a class="back-link" href="/guides">All guides</a>
+        <a class="back-link" href="/resources#guides">All resources</a>
         <p class="eyebrow eyebrow--taupe">Guide 01</p>
         <h1>{title}</h1>
         <hr class="rule" />
@@ -45,7 +45,7 @@ const description = 'A short guide to the therapeutic process: the first session
 
     <section class="section">
       <div class="wrap wrap--narrow">
-        <ul class="icon-list icon-list--roomy">
+        <ul class="icon-list icon-list--roomy" data-reveal>
           <li>
             <Icon name="chat" />
             <div>
@@ -80,7 +80,7 @@ const description = 'A short guide to the therapeutic process: the first session
 
     <section class="section section--white section--line">
       <div class="wrap split">
-        <div class="split__media">
+        <div class="split__media arch--soft" data-reveal>
           <Image src={still} alt="" widths={[480, 800]} sizes="(max-width: 820px) 100vw, 40vw" quality={70} style="aspect-ratio:4/3" />
         </div>
         <div class="prose">
@@ -94,7 +94,7 @@ const description = 'A short guide to the therapeutic process: the first session
 
     <section class="section section--line">
       <div class="wrap wrap--narrow">
-        <div class="note">
+        <div class="note" data-reveal>
           <p class="eyebrow eyebrow--taupe">A note to you</p>
           <p>These guides were created to make therapy feel a little less unfamiliar.</p>
           <p>Whether you choose to work with me or another therapist, I hope they help you ask better questions and feel more informed as you begin the process.</p>

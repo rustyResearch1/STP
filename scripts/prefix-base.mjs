@@ -20,6 +20,7 @@ for (const file of walk('dist')) {
     // href="/about", src="/x.jpg", action="/..." but not "//host" and not already prefixed
     .replace(/\b(href|src|action)="\/(?!\/)([^"]*)"/g, (m, attr, rest) =>
       ('/' + rest).startsWith(base + '/') || '/' + rest === base ? m : `${attr}="${base}/${rest}"`)
+    .replace(/content="(\d+);\s*url=\/(?!\/)([^"]*)"/g, (m, n, rest) => `content="${n};url=${base}/${rest}"`)
     .replace(/window\.location\.href = '\/thank-you'/g, `window.location.href = '${base}/thank-you'`);
   if (out !== html) { writeFileSync(file, out); count++; }
 }

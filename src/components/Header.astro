@@ -17,7 +17,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(href + '/')
           <li><a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>
         ))}
       </ul>
-      <a class="btn" href="/contact">Consultation Call</a>
+      <a class="btn" href="/contact">Book a Consultation</a>
     </nav>
   </div>
 </header>

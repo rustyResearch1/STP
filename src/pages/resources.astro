@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { guides } from '../data/guides';
+import guideImg from '../assets/still-life.jpg';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const published = guides.filter((g) => g.published);
+const upcoming = guides.filter((g) => !g.published);
+---
+<Base
+  title="Resources: Essays and Therapy Guides | Shloka Iyer, LMFT"
+  description="Essays on identity, immigration, culture and relationships, and short guides to help you navigate therapy, by Shloka Iyer, LMFT."
+>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Resources</p>
+      <h1>Resource library</h1>
+      <p class="lead">I write about identity, relationships, culture, and modern life, particularly the experiences that often go unnamed but shape how we understand ourselves.</p>
+    </div>
+  </section>
+
+  <section class="section section--white section--line" style="padding-top:3.5rem" id="essays" aria-labelledby="essays-heading">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Essays</p>
+          <h2 id="essays-heading">Essays and write-ups</h2>
+        </div>
+      </div>
+      <ul class="cards cards--two">
+        {posts.map((post, i) => (
+          <li class="card" data-reveal style={`--d:${i * 100}ms`}>
+            <div class="card__media"><Image src={post.data.cover} alt="" widths={[480, 800]} sizes="(max-width: 600px) 100vw, 45vw" loading={i < 2 ? 'eager' : 'lazy'} quality={70} /></div>
+            <div class="card__body">
+              <p class="card__meta"><time datetime={post.data.date.toISOString().slice(0, 10)}>{fmt(post.data.date)}</time></p>
+              <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
+              <p>{post.data.excerpt}</p>
+              <span class="card__more" aria-hidden="true">Read more →</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--line" id="guides" aria-labelledby="guides-heading">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Guides</p>
+          <h2 id="guides-heading">Making therapy feel a little less unfamiliar</h2>
+        </div>
+      </div>
+      <div class="cols" style="align-items:start">
+        <ul class="cards" style="grid-template-columns:1fr">
+          {published.map((g) => (
+            <li class="card" data-reveal>
+              <div class="card__media"><Image src={guideImg} alt="" widths={[480, 800]} sizes="(max-width: 820px) 100vw, 35vw" quality={70} /></div>
+              <div class="card__body">
+                <p class="card__meta">Guide {g.number}</p>
+                <h3><a href={`/guides/${g.slug}`}>{g.title}</a></h3>
+                <p>{g.summary}</p>
+                <span class="card__more" aria-hidden="true">Read guide →</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div data-reveal style="--d:120ms">
+          <p class="eyebrow">Coming next</p>
+          <dl class="rows">
+            {upcoming.map((g) => <div style="grid-template-columns:6rem 1fr"><dt>Guide {g.number}</dt><dd>{g.title}</dd></div>)}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

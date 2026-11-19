@@ -2,14 +2,14 @@
 import { site } from '../data/site';
 interface Props { heading?: string; text?: string }
 const {
-  heading = 'Ready to start the conversation?',
-  text = `I offer a free ${site.consultLength.replace(' minutes', '-minute')} consultation to see if we might be a good fit. It is a chance for you to ask questions and for us to discuss your goals.`,
+  heading = 'Ready to get started?',
+  text = `Finding the right therapist is important. If you'd like to see whether we're a good fit, you're welcome to schedule a ${site.consultLength.replace(' minutes', '-minute')} consultation. It's an opportunity to ask questions, learn more about my approach, and decide whether working together feels right for you.`,
 } = Astro.props;
 ---
 <section class="section cta-band section--line">
-  <div class="wrap">
+  <div class="wrap" data-reveal>
     <h2>{heading}</h2>
     <p>{text}</p>
-    <a class="btn" href="/contact">Schedule a Consultation Call</a>
+    <a class="btn" href="/contact">Book a Consultation</a>
   </div>
 </section>

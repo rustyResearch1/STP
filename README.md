@@ -47,5 +47,5 @@ The site uses clean URLs without trailing slashes (`/about` is served from `abou
 ## Still placeholders
 
 - All photographs except Shloka's portrait came from the previous site and were marked as temporary there.
-- Guides 02 and 03 are listed as "in progress" and have no page yet.
+- Guides 02 to 05 are listed as "coming next" and have no page yet.
 - No analytics is installed.
