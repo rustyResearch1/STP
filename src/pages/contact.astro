@@ -16,8 +16,8 @@ import { site } from '../data/site';
   </section>
 
   <section class="section section--white section--line" style="padding-top:3.5rem">
-    <div class="wrap split split--top" style="grid-template-columns:minmax(0,5fr) minmax(0,6fr)">
-      <div>
+    <div class="wrap split split--top split--form">
+      <div class="split--form__info">
         <h2 style="font-size:1.625rem;margin-bottom:1rem">What happens next</h2>
         <ol class="steps">
           <li><span>Send a short note using the form.</span></li>
@@ -26,8 +26,8 @@ import { site } from '../data/site';
         </ol>
 
         <p class="eyebrow" style="margin-top:2.5rem">Office hours</p>
-        <dl class="rows">
-          {site.hours.map(([d, h]) => <div style="grid-template-columns:11rem 1fr"><dt>{d}</dt><dd>{h}</dd></div>)}
+        <dl class="rows rows--hours">
+          {site.hours.map(([d, h]) => <div><dt>{d}</dt><dd>{h}</dd></div>)}
         </dl>
 
         <p style="margin-top:2rem;font-size:.9375rem;color:var(--text-muted)">
@@ -54,8 +54,8 @@ import { site } from '../data/site';
             <input id="phone" name="phone" type="tel" autocomplete="tel" />
           </div>
           <div class="field">
-            <label for="message">What brings you here?</label>
-            <textarea id="message" name="message" required aria-describedby="message-hint"></textarea>
+            <label for="message">What brings you here? <span>(optional)</span></label>
+            <textarea id="message" name="message" aria-describedby="message-hint"></textarea>
             <p class="field__hint" id="message-hint">A sentence or two is plenty. Please don't include sensitive health details here; we can talk about those on our call.</p>
           </div>
           <button class="btn" type="submit">Send message</button>

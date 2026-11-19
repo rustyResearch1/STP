@@ -10,7 +10,10 @@ import heroImg from '../assets/coast-hero.jpg';
 import portrait from '../assets/shloka-portrait.jpg';
 import guideImg from '../assets/still-life.jpg';
 
-const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+// The immigrant essay is her signature piece, so it leads the writing section.
+const featured = posts.find((p) => p.id === 'the-silent-survival-mode-of-immigrants-in-america') ?? posts[0];
+const others = posts.filter((p) => p !== featured).slice(0, 1);
 const guide = guides[0];
 
 const familiar = [
@@ -34,13 +37,17 @@ const familiar = [
     </div>
     <div class="wrap hero__inner">
       <div class="hero__text">
+        <p class="hero__who">
+          <Image src={portrait} alt="" width={104} height={104} quality={80} loading="eager" />
+          <span><strong>Shloka Iyer, LMFT</strong>South Asian therapist · Online across California</span>
+        </p>
         <h1>Therapy for immigrants, first-generation adults, and individuals navigating identity, relationships &amp; life transitions</h1>
         <p class="display">Life doesn't always become difficult because something has gone wrong. <em>Sometimes it's because you've changed.</em></p>
         <hr class="rule" />
         <p class="hero__sub">Therapy offers a space to slow down, make sense of what's happening, and respond to life with greater intention rather than simply reacting to it.</p>
         <div class="hero__cta">
           <a class="btn" href="/contact">Book a Consultation</a>
-          <span class="hero__note">Free 15-minute call · Online across California</span>
+          <span class="hero__note">Free 15-minute call</span>
         </div>
       </div>
     </div>
@@ -103,59 +110,18 @@ const familiar = [
         <Icon name="context" />
         <h2><a href="/who-i-work-with">Who I work with</a></h2>
         <p>While I work with adults from a variety of backgrounds, much of my practice has naturally evolved around people navigating questions of identity, belonging, relationships, and change.</p>
-        <p>This often includes immigrants, first-generation adults, and individuals who find themselves balancing multiple expectations, adapting to different environments, or trying to understand who they are in this stage of life.</p>
         <span class="card__more" aria-hidden="true">Learn more →</span>
       </div>
       <div class="panel" data-reveal style="--d:120ms">
         <Icon name="chat" />
         <h2><a href="/approach">My approach</a></h2>
-        <p>I believe therapy works best when it feels like a genuine therapeutic relationship rather than a one-sided process.</p>
-        <p>My style is conversational, engaged, and, at times, direct. I value authenticity in the therapy room and don't aim to be a blank slate.</p>
+        <p>I believe therapy works best when it feels like a genuine therapeutic relationship rather than a one-sided process. My style is conversational, engaged, and, at times, direct.</p>
         <span class="card__more" aria-hidden="true">Read more →</span>
       </div>
     </div>
   </section>
 
-  <section class="section section--white section--line" aria-labelledby="writing-heading">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div>
-          <p class="eyebrow">Resources</p>
-          <h2 id="writing-heading">Recent writing</h2>
-          <p style="max-width:36rem;margin-top:1rem">I write about identity, relationships, culture, and modern life, particularly the experiences that often go unnamed but shape how we understand ourselves.</p>
-        </div>
-        <a class="arrow-link" href="/resources">Explore the resource library</a>
-      </div>
-      <ul class="cards">
-        {posts.map((post, i) => (
-          <li class="card" data-reveal style={`--d:${i * 100}ms`}>
-            <div class="card__media">
-              <Image src={post.data.cover} alt="" widths={[480, 800]} sizes="(max-width: 600px) 100vw, 33vw" quality={70} />
-            </div>
-            <div class="card__body">
-              <p class="card__meta">Essay</p>
-              <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
-              <p>{post.data.excerpt}</p>
-              <span class="card__more" aria-hidden="true">Read more →</span>
-            </div>
-          </li>
-        ))}
-        <li class="card" data-reveal style="--d:200ms">
-          <div class="card__media">
-            <Image src={guideImg} alt="" widths={[480, 800]} sizes="(max-width: 600px) 100vw, 33vw" quality={70} />
-          </div>
-          <div class="card__body">
-            <p class="card__meta">Guide {guide.number}</p>
-            <h3><a href={`/guides/${guide.slug}`}>{guide.title}</a></h3>
-            <p>{guide.summary}</p>
-            <span class="card__more" aria-hidden="true">Read guide →</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section section--line" aria-labelledby="answers-heading">
+  <section class="section section--white section--line" aria-labelledby="answers-heading">
     <div class="wrap">
       <div class="section-head" data-reveal>
         <div>
@@ -182,6 +148,60 @@ const familiar = [
           <dd>Therapy is conversational and adapted to your needs. The first session is more structured to help us understand your background and goals, while subsequent sessions become more exploratory and collaborative.</dd>
         </div>
       </dl>
+    </div>
+  </section>
+
+  <section class="section section--line" aria-labelledby="writing-heading">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Resources</p>
+          <h2 id="writing-heading">Recent writing</h2>
+          <p style="max-width:36rem;margin-top:1rem">I write about identity, relationships, culture, and modern life, particularly the experiences that often go unnamed but shape how we understand ourselves.</p>
+        </div>
+        <a class="arrow-link" href="/resources">Explore the resource library</a>
+      </div>
+
+      {featured && (
+        <article class="feature-essay" data-reveal>
+          <div class="feature-essay__media">
+            <Image src={featured.data.cover} alt="" widths={[600, 1000]} sizes="(max-width: 820px) 100vw, 50vw" quality={70} />
+          </div>
+          <div class="feature-essay__body">
+            <p class="card__meta">Featured essay</p>
+            <h3><a href={`/blog/${featured.id}`}>{featured.data.title}</a></h3>
+            <blockquote>{featured.data.excerpt}</blockquote>
+            <span class="card__more" aria-hidden="true">Read the essay →</span>
+          </div>
+        </article>
+      )}
+
+      <ul class="cards cards--two">
+        {others.map((post, i) => (
+          <li class="card" data-reveal style={`--d:${i * 100}ms`}>
+            <div class="card__media">
+              <Image src={post.data.cover} alt="" widths={[480, 800]} sizes="(max-width: 600px) 100vw, 45vw" quality={70} />
+            </div>
+            <div class="card__body">
+              <p class="card__meta">Essay</p>
+              <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
+              <p>{post.data.excerpt}</p>
+              <span class="card__more" aria-hidden="true">Read more →</span>
+            </div>
+          </li>
+        ))}
+        <li class="card" data-reveal style="--d:100ms">
+          <div class="card__media">
+            <Image src={guideImg} alt="" widths={[480, 800]} sizes="(max-width: 600px) 100vw, 45vw" quality={70} />
+          </div>
+          <div class="card__body">
+            <p class="card__meta">Guide {guide.number}</p>
+            <h3><a href={`/guides/${guide.slug}`}>{guide.title}</a></h3>
+            <p>{guide.summary}</p>
+            <span class="card__more" aria-hidden="true">Read guide →</span>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 
