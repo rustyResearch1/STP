@@ -17,8 +17,12 @@ interface Props {
   schema?: Record<string, unknown>[];
 }
 
-const { title, description, ogType = 'website', ogImage = '/og-default.jpg', noindex = false, schema = [] } = Astro.props;
-const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '');
+const { title, description, ogType = 'website', ogImage = '/og-default.jpg', schema = [] } = Astro.props;
+// Preview deployments (served from a sub-folder) must never be indexed.
+const isPreview = import.meta.env.BASE_URL !== '/';
+const noindex = Astro.props.noindex || isPreview;
+const basePrefix = import.meta.env.BASE_URL.replace(/\/$/, '');
+const path = Astro.url.pathname.slice(basePrefix.length).replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '');
 const canonical = new URL(path || '/', site.url).href;
 const ogImageUrl = new URL(ogImage, site.url).href;
 

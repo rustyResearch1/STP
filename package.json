@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/prefix-base.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -13,5 +13,8 @@
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource/playfair-display": "^5.3.0",
     "astro": "^7.4.13"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
