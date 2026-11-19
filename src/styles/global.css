@@ -490,12 +490,11 @@ a:hover {
   object-position: 70% 55%;
 }
 
-/* Fades the photograph into the page so the headline always sits on a solid, light ground. */
-.hero__media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, var(--cream) 0%, rgba(243, 238, 230, 0.92) 28%, rgba(243, 238, 230, 0) 68%);
+/* The photograph fades into the page with a mask, so the headline always sits on the solid page colour
+   and the paper grain shows through evenly (no seam where the photo begins). */
+.hero__media {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.08) 28%, #000 68%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.08) 28%, #000 68%);
 }
 
 .hero__inner {
@@ -570,8 +569,9 @@ a:hover {
     height: 15rem;
   }
 
-  .hero__media::after {
-    display: none;
+  .hero__media {
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .hero__inner {
